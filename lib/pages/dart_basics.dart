@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class dart_basics extends StatelessWidget {
+class DartBasis extends StatelessWidget {
   int days = 30;
   String name = "Rosh";
   double pie = 3.14;
