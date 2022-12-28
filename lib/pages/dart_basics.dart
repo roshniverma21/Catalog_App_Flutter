@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
 
 class DartBasis extends StatelessWidget {
-  int days = 30;
-  String name = "Rosh";
-  double pie = 3.14;
-  bool isFemale = true;
-  num temp = 60.4; //can take int and double also
-  var day = "Tuesday"; // can take any value
+  DartBasis({super.key});
+   
+  // yaha sabko final diya hai kyuki yeh dartBasics class jo hai voh jaha se 
+  // extend ho rhi hai voh class immutable hai toh hume sa varibales ko final 
+  // rakhna pada taki error hat jaye
+  final int days = 30;
+  final String name = "Rosh";
+  final double pie = 3.14;
+  final bool isFemale = true;
+  final num temp = 60.4; //can take int and double also
+  final day = "Tuesday"; // can take any value
   static const pi =
       3.14; //value will never change suppose list hai voh modify nhi hogi
   final arr = [
     1,
     2
-  ]; //data can be modified suppose list hai usme data add ho jayega
+  ];//data can be modified suppose list hai usme data add ho jayega
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Catalog app")),
+      appBar: AppBar(title: const Text("Catalog app")),
       body: Center(
         child: Column(children: <Widget>[
           Text(
@@ -25,11 +30,13 @@ class DartBasis extends StatelessWidget {
           Text("welcome to $days "),
           Text(
               "welcome to ${days} "), // if suppose we ahd object here toh hum curly braces use krte but agar ek hi cheez hai toh dollar
-          Text("welcome to " + name + " mall"),
+          // ignore: prefer_interpolation_to_compose_strings
+          Text("welcome to " + name + " mall"), // string interpolation use nhi kia toh error show kr rha hai 
           Text("welcome to $isFemale is $temp and $day and ${5}"),
-        ]),
+        ]
       ),
-      drawer: Drawer(),
+    ),
+      drawer: const Drawer(),
     );
   }
 }
