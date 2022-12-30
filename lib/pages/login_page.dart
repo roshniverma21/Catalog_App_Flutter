@@ -15,8 +15,6 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   moveToHome(BuildContext context) async{
-    //form will be validated over here if it has validation error
-    // it will throw error else will execute this block
     if(_formKey.currentState!.validate()) {
       setState(() {
         changeButton = true;
@@ -39,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             children: [
               Image.asset("assets/images/Login2.png", fit: BoxFit.cover),
-               const SizedBox(height: 10),
+               const SizedBox(height: 5),
 
               Text(
                 "Welcome $name",
@@ -93,14 +91,8 @@ class _LoginPageState extends State<LoginPage> {
                 ]),
               ),
 
-              //button with animation
-              //container does not have clickable property so we have to wrap
-              // them with 1. Inkwell (it has a ripple effect means jab press
-              // kare toh pta lage button press hua ) and ink and inkwell are
-              // used tor 2. Just a detector(it does not give any feedback and
-              // have no UI/ripple effect/ tap ni diktat)
               Material(
-                color: Colors.deepPurple,
+                color: Colors.deepPurpleAccent,
                 borderRadius:
                 BorderRadius.circular(changeButton ? 50 : 8),
                 child: InkWell(
