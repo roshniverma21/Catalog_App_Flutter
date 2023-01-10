@@ -25,15 +25,15 @@ class HomeDetailPage extends StatelessWidget {
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
           children: [
-            "\Rs.${catalog.price}".text.bold.xl4.red800.make(),
+            "\Rs.${catalog.price}".text.bold.xl.red800.make(),
             ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all(MyTheme.darkBluishColor),
                   shape: MaterialStateProperty.all(StadiumBorder())),
-              child: "Buy".text.make(),
-            ).wh(100, 30),
+              child: "Add to Cart".text.make(),
+            ).wh(120, 30),
           ],
         ).p32(),
       ),

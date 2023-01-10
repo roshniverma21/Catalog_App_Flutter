@@ -5,5 +5,6 @@ class MyRoute {
       "/home";
   static String homeDetailRoute =
       "/detail";
-
+  static String cartRoute =
+      "/cart";
 }
