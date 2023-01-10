@@ -9,7 +9,6 @@ import '../utils/routes.dart';
 import '../widgets/home_widgets/catalog_header.dart';
 import '../widgets/home_widgets/catalog_list.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -39,11 +38,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: MyTheme.creamColor,
+        backgroundColor: context.canvasColor,
         floatingActionButton: FloatingActionButton(
-          onPressed:() => Navigator.pushNamed(context, MyRoute.cartRoute),
-          backgroundColor: MyTheme.darkBluishColor,
-          child: Icon(CupertinoIcons.cart),
+          onPressed: () => Navigator.pushNamed(context, MyRoute.cartRoute),
+          backgroundColor: context.theme.buttonColor,
+          child: Icon(CupertinoIcons.cart, color: Colors.white),
         ),
         body: SafeArea(
           child: Container(
@@ -62,8 +61,3 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 }
-
-
-
-
-
