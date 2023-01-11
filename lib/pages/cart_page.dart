@@ -33,12 +33,20 @@ class _CartTotal extends StatelessWidget {
       height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+          //here when item is removed from cart we want to change the price so we cant build teh whole widget so we will use
+          //VxBuilder(jaha bhi apko state access krni hai voh deta hai),
+          //VxNotifier(jaha apko context chahiye ho navigation, toast, ya snackbar ki need ho )
+          //VxConsumer(mixture of both)
         children: [
-          "\Rs. ${_cart.totalPrice}"
-              .text
-              .xl5
-              .color(context.theme.accentColor)
-              .make(),
+          VxBuilder(
+              mutations: const {RemoveMutation},
+              builder: (context,_,status) {
+              return "\Rs. ${_cart.totalPrice}".text.xl5
+                  .color(context.theme.accentColor)
+                  .make();
+              },
+          ),
           30.widthBox,
           ElevatedButton(
             onPressed: () {
@@ -60,7 +68,9 @@ class _CartTotal extends StatelessWidget {
 class _CartList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final CartModel _cart = (VxState.store as MyStore).cart;
+    //when this is written this will draw the widget tree aghain
+    VxState.watch(context, on: [RemoveMutation]);//this will work only for removing mutatio
+  final CartModel _cart = (VxState.store as MyStore).cart;
     return _cart.items?.length == 0
         ? "Nothing to show".text.makeCentered()
         : ListView.builder(
@@ -69,12 +79,12 @@ class _CartList extends StatelessWidget {
               leading: Icon(Icons.done),
               trailing: IconButton(
                 icon: Icon(Icons.remove_circle_outline),
-                onPressed: () {
-                  _cart.remove((_cart.items[index]));
-                },
+                onPressed: () =>
+                  RemoveMutation((_cart.items[index]));
               ),
               title: _cart.items[index].name.text.make(),
             ),
           );
   }
 }
+

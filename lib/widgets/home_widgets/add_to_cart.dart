@@ -13,7 +13,9 @@ class AddToCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      VxState.watch(context, on: [AddMutation]); //mutation is action performed
+    //keep all business logic in mutation
+    //add is when item added in cart and remove is when item removed from so that the tick can be back to normal cart icon
+      VxState.watch(context, on: [AddMutation, RemoveMutation]); //mutation is action performed
       final CartModel _cart = (VxState.store as MyStore).cart;
       bool isInCart = _cart.items.contains(catalog) ?? false;
       return ElevatedButton(
