@@ -5,17 +5,12 @@ import 'package:velocity_x/velocity_x.dart';
 import '../../model/cart.dart';
 import '../../model/catalog.dart';
 
-class AddToCart extends StatefulWidget {
+class AddToCart extends StatelessWidget {
   final Item catalog;
-  const AddToCart({
+  AddToCart({
     required this.catalog,
   });
 
-  @override
-  _AddToCartState createState() => _AddToCartState();
-}
-
-class _AddToCartState extends State<AddToCart> {
   final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
@@ -27,8 +22,7 @@ class _AddToCartState extends State<AddToCart> {
           final _catalog = CatalogModel();
           final _cart = CartModel();
           _cart.catalog = _catalog;
-          _cart.add(widget.catalog);
-          setState(() {});
+          _cart.add(catalog);
         }
       },
       style: ButtonStyle(
