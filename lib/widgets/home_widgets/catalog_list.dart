@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../model/catalog.dart';
 import '../../pages/home_detail_page.dart';
-import '../theme.dart';
 import 'catalog_image.dart';
 
 class CatalogList extends StatefulWidget {
@@ -19,7 +18,7 @@ class _CatalogListState extends State<CatalogList> {
     return ListView.builder(
       itemCount: CatalogModel.items!.length,
       itemBuilder: (context, index) {
-        final catalog = CatalogModel.getByPosition(index);
+        final catalog = CatalogModel.items![index];
         return InkWell(
           onTap: () => Navigator.push(
             context,
