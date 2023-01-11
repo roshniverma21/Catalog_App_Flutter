@@ -19,7 +19,7 @@ class _CatalogListState extends State<CatalogList> {
     return ListView.builder(
       itemCount: CatalogModel.items!.length,
       itemBuilder: (context, index) {
-        final catalog = CatalogModel.items![index];
+        final catalog = CatalogModel.getByPosition(index);
         return InkWell(
           onTap: () => Navigator.push(
             context,
